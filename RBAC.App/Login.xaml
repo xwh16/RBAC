@@ -1,0 +1,34 @@
+﻿<Controls:MetroWindow x:Class="RBAC.App.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:RBAC.App"
+        mc:Ignorable="d"
+        Title="Login" Height="230" Width="300" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label x:Name="label" Content="用户名" VerticalAlignment="Center"/>
+            <TextBox x:Name="username" Height="30" TextWrapping="Wrap" Width="120" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        </WrapPanel>
+        <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
+            <Label x:Name="label1" Content="密码 " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <PasswordBox x:Name="password" Width="120" Height="30"/>
+        </WrapPanel>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btn_login" Content="登录" VerticalAlignment="Center" Margin="10,0" Click="btn_login_click"/>
+            <Button x:Name="btn_admin" Content="管理员账户" VerticalAlignment="Center" Grid.Column="1" Margin="10,0" Click="btn_admin_click"/>
+        </Grid>
+
+    </Grid>
+</Controls:MetroWindow>

@@ -1,0 +1,61 @@
+﻿<Controls:MetroWindow x:Class="RBAC.App.User.UserWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      Title="UserWindow" Height="720" Width="1280 ">
+    <Grid Background="#FFE5E5E5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <TreeView x:Name="TreeView"  ItemsSource="{Binding TreeList}" Margin="20,20,5,20" SelectedItemChanged="selection_changed" >
+            <TreeView.Effect>
+                <DropShadowEffect/>
+            </TreeView.Effect>
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                    <TreeViewItem Header="{Binding Name}"  />
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+        <Grid Grid.Column="1" Margin="5,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="583*"/>
+                <RowDefinition Height="67*"/>
+            </Grid.RowDefinitions>
+            <Grid.Effect>
+                <DropShadowEffect/>
+            </Grid.Effect>
+            <DataGrid x:Name="RolePermissionsGrid" AutoGenerateColumns="False" Margin="0,10,5,10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="权限ID" Binding="{Binding pid}"/>
+                    <DataGridTextColumn Header="权限名" Binding="{Binding name}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btn_activate" Content="激活角色" FontSize="16" Click="btn_activate_click" Margin="5"/>
+                <Button x:Name="btn_logout" Content="注销登录" FontSize="16" Click="btn_logout_click" Margin="5" Grid.Column="1"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="2" Margin="5,20,20,20">
+            <Grid.Effect>
+                <DropShadowEffect/>
+            </Grid.Effect>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <DataGrid x:Name="ActiveRoleGrid" Margin="0,0,0,5">
+            </DataGrid>
+            <DataGrid x:Name="ActivePermissionGrid" AutoGenerateColumns="True" Grid.Row="1" Margin="0,5,0,0">
+                <DataGrid.Columns>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Controls:MetroWindow>
